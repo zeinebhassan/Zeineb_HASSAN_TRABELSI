@@ -11,6 +11,33 @@
 
   <meta name="theme-color" content="#f7f3eb" />
 
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>"
+  />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta
+    property="og:title"
+    content="Zeineb Hassan Trabelsi — Professeure des écoles & Accompagnante pédagogique"
+  />
+  <meta
+    property="og:description"
+    content="Enseignement, soutien scolaire et accompagnement des enfants à besoins spécifiques, avec écoute, patience et bienveillance."
+  />
+  <meta property="og:image" content="photo-zeineb.jpg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta
+    name="twitter:title"
+    content="Zeineb Hassan Trabelsi — Professeure des écoles & Accompagnante pédagogique"
+  />
+  <meta
+    name="twitter:description"
+    content="Enseignement, soutien scolaire et accompagnement des enfants à besoins spécifiques, avec écoute, patience et bienveillance."
+  />
+
   <title>
     Zeineb Hassan Trabelsi — Professeure des écoles & Accompagnante pédagogique
   </title>
@@ -181,6 +208,10 @@
       border-bottom: 1px solid rgba(230, 224, 213, 0.8);
     }
 
+    header .nav {
+      position: relative;
+    }
+
     .nav {
       min-height: 76px;
       display: flex;
@@ -245,6 +276,61 @@
       border-radius: 50px;
       background: var(--sage-dark);
       color: white !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .nav-toggle span {
+      position: relative;
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      transition: 0.25s ease;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      transition: 0.25s ease;
+    }
+
+    .nav-toggle span::before {
+      top: -6px;
+    }
+
+    .nav-toggle span::after {
+      top: 6px;
+    }
+
+    .nav-toggle[aria-expanded="true"] span {
+      background: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] span::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span::after {
+      top: 0;
+      transform: rotate(-45deg);
     }
 
     /* =========================================================
@@ -775,7 +861,7 @@
 
     .cert-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
@@ -807,10 +893,6 @@
 
     .cert-card:nth-child(3) {
       background: var(--peach-light);
-    }
-
-    .cert-card:nth-child(4) {
-      background: var(--blue-light);
     }
 
     .cert-illustration {
@@ -1226,8 +1308,46 @@
         min-height: 65px;
       }
 
+      .nav-toggle {
+        display: inline-flex;
+      }
+
       .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 14px min(4%, 46px) 22px;
+        background: var(--cream-light);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-soft);
         display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 4px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child a {
+        border-bottom: none;
+      }
+
+      .nav-contact {
+        display: inline-flex;
+        margin-top: 8px;
       }
 
       .hero {
@@ -1369,8 +1489,19 @@
         </div>
       </a>
 
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navLinks"
+        aria-label="Ouvrir le menu"
+      >
+        <span></span>
+      </button>
+
       <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
           <li><a href="#apropos">À propos</a></li>
           <li><a href="#accompagnement">Accompagnement</a></li>
           <li><a href="#parcours">Parcours</a></li>
@@ -1434,27 +1565,11 @@
 
           <div class="hero-photo" id="protectedPhoto">
 
-            <!--
-              REMPLACER LE BLOC CI-DESSOUS PAR VOTRE PHOTO :
-
-              <img
-                src="photo-zeineb.jpg"
-                alt="Zeineb Hassan Trabelsi, professeure des écoles"
-                draggable="false"
-                oncontextmenu="return false;"
-              >
-
-              Placez ensuite photo-zeineb.jpg dans le même dossier
-              que index.html.
-            -->
-
-           <div class="hero-photo" id="protectedPhoto">
-
-        <img
-            src="photo-zeineb.jpg"
-            alt="Zeineb Hassan Trabelsi, professeure des écoles et accompagnante pédagogique"
-            draggable="false"
-            oncontextmenu="return false;"
+            <img
+              src="photo-zeineb.jpg"
+              alt="Zeineb Hassan Trabelsi, professeure des écoles et accompagnante pédagogique"
+              draggable="false"
+              oncontextmenu="return false;"
             />
 
           </div>
@@ -1753,7 +1868,7 @@
           <div class="experience-text">
 
             <strong>
-              👩‍🏫 Enseignante des écoles primaires
+              👩‍🏫 Professeure des écoles primaires
             </strong>
 
             <p>
@@ -1824,6 +1939,61 @@
 
                 <span class="career-tag">
                   Médiation
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ENGAGEMENT ASSOCIATIF -->
+
+          <div class="career-item">
+
+            <div class="career-dot">
+              🤝
+            </div>
+
+            <div class="career-content">
+
+              <span class="career-date">
+                Engagement continu
+              </span>
+
+              <h3>
+                Engagement associatif auprès des enfants et des jeunes
+              </h3>
+
+              <div class="career-place">
+                Croissant Rouge · Scouts · Le Petit Secouriste
+              </div>
+
+              <p class="career-role">
+                Une expérience de terrain acquise au fil de plusieurs
+                engagements associatifs : animation de clubs, encadrement
+                de groupes d'enfants et de jeunes, sensibilisation aux
+                gestes de premiers secours et participation à des actions
+                humanitaires. Autant de missions qui ont renforcé mon
+                sens des responsabilités, mon écoute et ma capacité à
+                encadrer un groupe avec bienveillance.
+              </p>
+
+              <div class="career-tags">
+                <span class="career-tag">
+                  Encadrement de groupe
+                </span>
+
+                <span class="career-tag">
+                  Animation de clubs
+                </span>
+
+                <span class="career-tag">
+                  Premiers secours
+                </span>
+
+                <span class="career-tag">
+                  Engagement humanitaire
                 </span>
               </div>
 
@@ -2054,31 +2224,6 @@
             <p>
               Une compétence complémentaire liée à la sécurité
               et au bien-être des enfants.
-            </p>
-
-          </article>
-
-
-          <article class="cert-card">
-
-            <span class="cert-number">04</span>
-
-            <div class="cert-illustration">
-              💻
-            </div>
-
-            <h3>
-              Microsoft Tools
-              for Startups
-            </h3>
-
-            <div class="cert-school">
-              Formation complémentaire
-            </div>
-
-            <p>
-              Développement de compétences autour des outils
-              numériques et informatiques.
             </p>
 
           </article>
@@ -2606,6 +2751,40 @@
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+
+    /* =====================================================
+       MENU MOBILE
+    ====================================================== */
+
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    if (navToggle && navLinks) {
+
+      navToggle.addEventListener("click", function () {
+
+        const isOpen = navLinks.classList.toggle("open");
+
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        navToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Fermer le menu" : "Ouvrir le menu"
+        );
+
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.setAttribute("aria-label", "Ouvrir le menu");
+        });
+
+      });
+
+    }
 
 
     /* =====================================================
